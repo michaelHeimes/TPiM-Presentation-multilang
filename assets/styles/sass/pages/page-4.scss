@@ -1,0 +1,86 @@
+#page-4 {
+	.mask-buttons {
+	
+		> div {
+			position: absolute;
+			width: 17%;
+			height: 13%;
+			//background: rgba(255,255,255,.4);
+			
+		&#p4-d1-trigger {
+			top: 42.95%;
+			left: 10.12%;
+			svg {
+				left: 29%;
+			}
+		}
+		&#p4-d2-trigger {
+			top: 42.95%;
+			left: 30.5%;
+			svg {
+				left: 32.6%;
+			}
+		}
+		&#p4-d3-trigger {
+			top: 42.95%;
+			left: 50.5%;
+			svg {
+				left: 49%;
+			}
+		}	
+		&#p4-d4-trigger {
+			top: 42.95%;
+			left: 74.5%;
+			svg {
+				left: 35%;
+			}
+		}			
+			svg.plus {
+				width: 10.2%;
+				bottom: 8.1%;
+				left: 49.3%;
+			}
+			
+		}
+	}
+}
+
+#p4-d1 {
+	transform: translateX(-1.15vh);
+
+	.mask-buttons {
+	
+	> div {
+		position: absolute;
+		width: 13%;
+		height: 8%;
+		//background: rgba(255,255,255,.4);
+		
+		&.air-trigger.modal-trigger {
+			top: 56%;
+			left: 13%;
+			height: 10%;
+			
+			svg.plus {
+				bottom: 10.4%;
+				left: 43.5%;
+			}
+			
+		}
+	
+	}
+
+	}
+}
+
+#p4-d2 {
+	transform: translateX(-1.15vh);
+}
+
+#p4-d3 {
+	transform: translateX(-1.15vh);
+}
+
+#p4-d4 {
+	transform: translateX(-1.15vh);
+}

@@ -1,0 +1,27 @@
+#page-5 {
+	.mask-buttons {
+	
+		> div {
+			position: absolute;
+			width: 44.5%;
+			height: 9.5%;
+			//background: rgba(255,255,255,.4);
+			
+		&#p5-d1-trigger {
+			top: 43.5%;
+			left: 10.12%;
+
+			svg.plus {
+				width: 4%;
+				bottom: 13.1%;
+				left: 43.2%;
+			}
+		}
+			
+		}
+	}
+}
+
+#p5-d1 {
+	transform: translateX(-1.15vh);
+}

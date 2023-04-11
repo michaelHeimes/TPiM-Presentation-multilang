@@ -1,0 +1,230 @@
+.app-container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	// *:not(.close-modal):not(.modal-mask):not(object):not(section) {
+	// 	&:focus,
+	// 	&:focus-within,
+	// 	&:focus-visible,
+	// 	&:active {
+	// 		background: initial;
+	// 		outline: 0;
+	// 	}
+	// }
+	
+	.click-groups > g,
+	.screensaver-trigger,
+	.mask-buttons>div {
+		cursor: pointer;
+		&:focus,
+		&:focus-within,
+		&:focus-visible,
+		&:active {
+			background: initial;
+			outline: 0;
+		}
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	.screensaver-trigger,
+	.click-groups > g,
+	.click-trigger {
+		cursor: pointer;
+	}
+	.color-cog {
+		transition: fill .3s ease;
+		path {
+			transition: fill .3s ease;
+		}
+	&.clicked {
+		fill: $brand-red;
+		path {
+			fill: $brand-red;
+		}
+	}
+	}
+	
+	.bg {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 50% 50%;
+	}
+	
+	svg.plus {
+		width: 14%;
+		position: absolute;
+	}
+	
+	.app-inner {
+		position: relative;
+		display: block;
+		height: 100vh;
+		width: 56.25vh;
+		max-width: 100vh;
+		margin: auto;
+		overflow: hidden;
+		
+		section {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			
+			&:not(.home) {
+			}
+			
+			&.back-page-constant {
+				background-image: url('../../images/constant-bg.svg');
+				background-size: cover;
+				
+				.bpc-top {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					width: 100%;
+				}
+				
+				#sidebar-bp {
+					position: absolute;
+					right: 0.5%;
+					bottom: 5%;
+					width: 16%;
+				}
+				
+			}
+			
+			&.back-page {
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				padding-left: 0;
+				display: flex;
+				align-items: center;
+				
+				object {
+					width: 100%;
+				}
+				
+			}
+			
+			.mask-buttons {
+			
+				> div {
+					cursor: pointer;
+				}
+			
+			}
+			
+		}
+	}
+	
+}
+
+.screen-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	svg {
+		width: 100%;
+		margin: auto;
+	}
+}
+
+.drawer-wrap {
+	position: absolute;
+	left: -1.2%;
+	top: 10%;
+	right: 0;
+	bottom: 10%;
+	width: 86%;
+	
+	img,
+	svg,
+	object {
+		width: 100%;
+		max-width: 100%;
+	}
+	
+	.positioned-images {
+		img {
+			position: absolute;
+		}
+	}
+	
+	.inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+	
+	.close-drawer {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 36%;
+		height: 8%;
+	}
+	
+}
+
+.modal-mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	.inner {
+		width: 65vw;
+		
+		img,
+		svg,
+		object {
+			width: 100%;
+			max-width: 100%;
+		}
+		
+		&#air-modal {
+			padding: 6%;
+		}
+		
+	}
+	
+	.close-modal {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 10vw;
+		height: 10vw;
+		img {
+			max-width: 40%;
+			height: auto;
+		}
+	}
+	
+}
+

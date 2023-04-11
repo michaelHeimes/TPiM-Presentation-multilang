@@ -1,0 +1,65 @@
+#page-2 {
+	.mask-buttons {
+		
+		> div {
+			position: absolute;
+			width: 13%;
+			height: 8%;
+			//background: rgba(255,255,255,.4);
+			
+		&#p2-d1-trigger {
+			top: 49%;
+			left: 12.35%;
+		}
+		&#p2-d2-trigger {
+			top: 49%;
+			left: 33.65%;
+		}
+		&#p2-d3-trigger {
+			top: 49%;
+			left: 54.6%;
+		}			
+			svg.plus {
+				bottom: 10.4%;
+				left: 43.5%;
+			}
+			
+		}
+	}
+}
+
+#p2-d1 {
+	transform: translateX(-1.15vh);
+}
+
+#p2-d2 {
+	transform: translateX(-1.15vh);
+
+	.mask-buttons {
+	
+	> div {
+		position: absolute;
+		width: 13%;
+		height: 8%;
+		//background: rgba(255,255,255,.4);
+		
+	&.at-package-trigger {
+		top: 61.22%;
+		left: 10.36%;
+		
+		svg.plus {
+			bottom: 10.4%;
+			left: 43.5%;
+		}
+		
+	}
+	
+	}
+
+	}
+
+}
+
+#p2-d3 {
+	transform: translateX(-1.15vh);
+}

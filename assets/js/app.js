@@ -372,7 +372,7 @@
 	const langUKs = document.querySelectorAll('.lang-uk');
 	const langDEs = document.querySelectorAll('.lang-de');
 	
-	appContainer.setAttribute('lang', 'uk');
+	appContainer.setAttribute('data-lang', 'uk');
 	
 	gsap.to(langDEs, {autoAlpha: 0, duration: 0});
 	
@@ -384,7 +384,7 @@
 			showLangUK.addEventListener("click", (event) => {
 				event.preventDefault();
 				appContainer.classList.add('is-animating');
-				appContainer.setAttribute('lang', 'uk');
+				appContainer.setAttribute('data-lang', 'uk');
 				backPageConstant.classList.remove('de-bg');
 				gsap.to(langDEs, {autoAlpha: 0, duration: .3});
 				gsap.to(langUKs, {autoAlpha: 1, duration: .3, delay: .1});
@@ -407,7 +407,7 @@
 			showLangDE.addEventListener("click", (event) => {
 				event.preventDefault();
 				appContainer.classList.add('is-animating');
-				appContainer.setAttribute('lang', 'de');
+				appContainer.setAttribute('data-lang', 'de');
 				backPageConstant.classList.add('de-bg');
 				gsap.to(langUKs, {autoAlpha: 0, duration: .3});
 				gsap.to(langDEs, {autoAlpha: 1, duration: .3, delay: .1});

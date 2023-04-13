@@ -3,6 +3,8 @@
   
  document.addEventListener('DOMContentLoaded', function () {
 	
+	
+	
 	const appContainer = document.getElementById('app-container');
 	
 	const screensaver = document.getElementById('screensaver');
@@ -37,11 +39,11 @@
 	const centerCircleText = document.getElementById('center-circle-text');
 	const circleScale = .7;
 	const homeLogo = document.getElementById('home-logo');
-	const sidebarNav = document.getElementById('sidebar-nav');	
+	const sidebarNav = document.querySelectorAll('.sidebar-nav');	
 	
 	const navtext = document.querySelectorAll('.nav-text');
 		
-	const pageLinks = document.querySelectorAll('#click-groups > g');
+	const pageLinks = document.querySelectorAll('.click-groups.page-links > g');
 	
 	const appAnalysis = document.getElementById('app-analysis');	
 	const batteryTechnologies = document.getElementById('batteryTechnologies');
@@ -52,8 +54,11 @@
 	
 	// Back Page Constant
 	const sbLinkHome = document.querySelectorAll('.home-trigger');
+	const langDrawerTriggers = document.querySelectorAll('.lang-drawer-trigger');
+	const langShift = document.querySelectorAll('.lang-shift');
+
 	const screensaverTrigger = document.querySelectorAll('.screensaver-trigger');
-	const sidebarBp = document.getElementById('sidebar-bp');
+	const sidebarBp = document.querySelectorAll('.sidebar-bp');
 
 	
 	// Animation Starting Points
@@ -136,13 +141,13 @@
 	openingAnimation.pause();
 	
 	let powerMeterAnimation = '';
-	homePowerMeters.forEach(function (homeHeader, index) {
+
 		
-		const homePowerMeter1 = homeHeader.querySelector('.home_powermeterRectangle_8');
-		const homePowerMeter2 = homeHeader.querySelector('.home_powermeterRectangle_9');
-		const homePowerMeter3 = homeHeader.querySelector('.home_powermeterRectangle_10');
-		const homePowerMeter4 = homeHeader.querySelector('.home_powermeterRectangle_11');
-		const homePowerMeter5 = homeHeader.querySelector('.home_powermeterRectangle_12');	
+		const homePowerMeter1 = document.querySelectorAll('.home_powermeterRectangle_8');
+		const homePowerMeter2 = document.querySelectorAll('.home_powermeterRectangle_9');
+		const homePowerMeter3 = document.querySelectorAll('.home_powermeterRectangle_10');
+		const homePowerMeter4 = document.querySelectorAll('.home_powermeterRectangle_11');
+		const homePowerMeter5 = document.querySelectorAll('.home_powermeterRectangle_12');	
 	
 		powerMeterAnimation = gsap.timeline({repeat: -1, repeatDelay: 1.25});
 		powerMeterAnimation.to(homePowerMeter1, {autoAlpha: .2, duration: .2});
@@ -153,7 +158,6 @@
 	
 		powerMeterAnimation.pause();
 	
-	});
 	
 	
 	// Abbreviated reverse animation
@@ -204,7 +208,7 @@
 		}, 400);	
 		setTimeout(function() {
 			powerMeterAnimation.timeScale(1).play();
-		}, 3200);
+		}, 4000);
 	});	 
 	
 	
@@ -226,6 +230,9 @@
 		
 		closeModal();
 		
+		powerMeterAnimation.pause();
+		powerMeterAnimation.restart();
+		
 		if( appContainer.classList.contains('home') ) {
 			// do nothing
 		} else {
@@ -240,7 +247,14 @@
 				openingAnimation.pause();
 				openingAnimation.timeScale(10).reverse();
 				powerMeterAnimation.pause();
-				gsap.to([homePowerMeter1, homePowerMeter2, homePowerMeter3, homePowerMeter4, homePowerMeter5], {autoAlpha: 0});
+				homePowerMeters.forEach(function (homePowerMeter, index) {
+					const homePowerMeter1 = homePowerMeter.querySelector('.home_powermeterRectangle_8');
+					const homePowerMeter2 = homePowerMeter.querySelector('.home_powermeterRectangle_9');
+					const homePowerMeter3 = homePowerMeter.querySelector('.home_powermeterRectangle_10');
+					const homePowerMeter4 = homePowerMeter.querySelector('.home_powermeterRectangle_11');
+					const homePowerMeter5 = homePowerMeter.querySelector('.home_powermeterRectangle_12');
+					gsap.to([homePowerMeter1, homePowerMeter2, homePowerMeter3, homePowerMeter4, homePowerMeter5], {autoAlpha: 0});
+				});
 				powerMeterAnimation.timeScale(10).reverse();
 			}, 1500);
 			
@@ -306,6 +320,71 @@
 		});	
 	}
 	
+	// Lang Trigger
+	const openTriggerLangDrawer = function() {
+		gsap.to(langShift, {x: '-=25.4vw', ease: "circ.out", duration: .8});
+	}
+	const closeTriggerLangDrawer = function() {
+		gsap.to(langShift, {x: '+=25.4vw', ease: "circ.out", duration: .8});
+		langDrawerTriggers.forEach(function (langDrawerTrigger, index) {
+			langDrawerTrigger.classList.remove('clicked');
+			langDrawerTrigger.classList.add('is-animating');
+			setTimeout(function() {
+				langDrawerTrigger.classList.remove('is-animating');
+			}, 850);
+		});
+	}
+	
+	langDrawerTriggers.forEach(function (langDrawerTrigger, index) {
+		langDrawerTrigger.addEventListener("click", (event) => {
+			if (langDrawerTrigger.classList.contains('is-animating') ) {
+				
+			} else {
+				if (langDrawerTrigger.classList.contains('clicked') ) {
+					langDrawerTrigger.classList.remove('clicked');
+					langDrawerTrigger.classList.add('is-animating');
+					closeTriggerLangDrawer();
+					setTimeout(function() {
+						langDrawerTrigger.classList.remove('is-animating');
+					}, 850);
+				} else {
+					langDrawerTrigger.classList.add('clicked');
+					langDrawerTrigger.classList.add('is-animating');
+					openTriggerLangDrawer();
+					setTimeout(function() {
+						langDrawerTrigger.classList.remove('is-animating');
+					}, 850);
+				}
+			}
+		});
+	});
+	
+	const showLangUKs = document.querySelectorAll('.show-lang-uk');
+	const showLangDEs = document.querySelectorAll('.show-lang-de');
+	const langUKs = document.querySelectorAll('.lang-uk');
+	const langDEs = document.querySelectorAll('.lang-de');
+	
+	gsap.to(langDEs, {autoAlpha: 0, duration: 0});
+	
+	showLangUKs.forEach(function (showLangUK, index) {
+		showLangUK.addEventListener("click", (event) => {
+			event.preventDefault();
+			backPageConstant.classList.remove('de-bg');
+			gsap.to(langDEs, {autoAlpha: 0, duration: .3});
+			gsap.to(langUKs, {autoAlpha: 1, duration: .3, delay: .1});
+			closeTriggerLangDrawer();
+		});
+	});
+	
+	showLangDEs.forEach(function (showLangDE, index) {
+		showLangDE.addEventListener("click", (event) => {
+			event.preventDefault();
+			backPageConstant.classList.add('de-bg');
+			gsap.to(langUKs, {autoAlpha: 0, duration: .3});
+			gsap.to(langDEs, {autoAlpha: 1, duration: .3, delay: .1});
+			closeTriggerLangDrawer();
+		});
+	});
 	
 	// Return to Home Page
 	const returnHome = function() {

@@ -88,6 +88,11 @@
 			&.back-page-constant {
 				background-image: url('../../images/constant-bg.svg');
 				background-size: cover;
+				transition: .3s ease;
+				
+			&.de-bg {
+				background-image: url('../../images/constant-bg-de.svg');
+			}
 				
 				.bpc-top {
 					position: absolute;
@@ -97,11 +102,23 @@
 					width: 100%;
 				}
 				
-				#sidebar-bp {
+				.sidebar-bp {
 					position: absolute;
-					right: 0.5%;
-					bottom: 5%;
-					width: 16%;
+					right: 0;
+					bottom: 17.8%;
+					width: 28%;
+					padding-top: 10%;
+					display: flex;
+					justify-content: flex-end;
+					svg {
+						max-width: 40%;
+						> g#Layer_1-2 {
+							transform: translate(33%,55%) scale(0.3987);
+						}
+						g.lang-de {
+							transform: translate(-23%, 0px);
+						}
+					}
 				}
 				
 			}

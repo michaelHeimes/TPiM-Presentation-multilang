@@ -658,6 +658,11 @@ body {
 .app-container .app-inner section.back-page-constant {
   background-image: url("../../images/constant-bg.svg");
   background-size: cover;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.app-container .app-inner section.back-page-constant.de-bg {
+  background-image: url("../../images/constant-bg-de.svg");
 }
 .app-container .app-inner section.back-page-constant .bpc-top {
   position: absolute;
@@ -666,11 +671,29 @@ body {
   right: 0;
   width: 100%;
 }
-.app-container .app-inner section.back-page-constant #sidebar-bp {
+.app-container .app-inner section.back-page-constant .sidebar-bp {
   position: absolute;
-  right: 0.5%;
-  bottom: 5%;
-  width: 16%;
+  right: 0;
+  bottom: 17.8%;
+  width: 28%;
+  padding-top: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.app-container .app-inner section.back-page-constant .sidebar-bp svg {
+  max-width: 40%;
+}
+.app-container .app-inner section.back-page-constant .sidebar-bp svg > g#Layer_1-2 {
+  -webkit-transform: translate(33%, 55%) scale(0.3987);
+          transform: translate(33%, 55%) scale(0.3987);
+}
+.app-container .app-inner section.back-page-constant .sidebar-bp svg g.lang-de {
+  -webkit-transform: translate(-23%, 0px);
+          transform: translate(-23%, 0px);
 }
 .app-container .app-inner section.back-page {
   width: 100%;

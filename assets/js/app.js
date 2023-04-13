@@ -231,7 +231,7 @@
 		closeModal();
 		
 		if (appContainer.classList.contains('lang-open') ) {
-			closeTriggerLangDrawer()
+			closeTriggerLangDrawer();
 		}
 		
 		powerMeterAnimation.pause();
@@ -330,10 +330,10 @@
 	
 	// Language Trigger
 	const openTriggerLangDrawer = function() {
-		gsap.to(langShift, {x: '-=25.4vw', ease: "circ.out", duration: .8});
+		gsap.to(langShift, {x: '-=60%', ease: "circ.out", duration: .8});
 	}
 	const closeTriggerLangDrawer = function() {
-		gsap.to(langShift, {x: '+=25.4vw', ease: "circ.out", duration: .8});
+		gsap.to(langShift, {x: 0, ease: "circ.out", duration: .8});
 		langDrawerTriggers.forEach(function (langDrawerTrigger, index) {
 			appContainer.classList.remove('lang-open');
 			langDrawerTrigger.classList.add('is-animating');
@@ -429,6 +429,8 @@
 		removeCogActiveStates();
 
 		closerDrawer();
+		
+		closeTriggerLangDrawer();
 		
 		gsap.to(sidebarBp, {autoAlpha: 0, x: '3vw', duration: 1});
 		gsap.to(backPage, {autoAlpha: 0, duration: .5, delay: .7});

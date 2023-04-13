@@ -709,7 +709,9 @@ body {
           align-items: center;
 }
 .app-container .app-inner section.back-page object {
+  position: absolute;
   width: 100%;
+  height: 100%;
 }
 .app-container .app-inner section .mask-buttons > div {
   cursor: pointer;
@@ -742,6 +744,8 @@ body {
 .drawer-wrap object {
   width: 100%;
   max-width: 100%;
+  position: absolute;
+  left: 0;
 }
 .drawer-wrap .positioned-images img {
   position: absolute;

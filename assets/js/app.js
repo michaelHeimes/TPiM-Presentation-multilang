@@ -230,6 +230,10 @@
 		
 		closeModal();
 		
+		if (appContainer.classList.contains('lang-open') ) {
+			closeTriggerLangDrawer()
+		}
+		
 		powerMeterAnimation.pause();
 		powerMeterAnimation.restart();
 		
@@ -285,6 +289,10 @@
 			let activeCog = document.querySelector("[data-cog='" +  pageLink.dataset.page + "']");
 			let activeConstantCog = document.querySelector("[data-constant-cog='" +  pageLink.dataset.page + "']");
 			
+			if (appContainer.classList.contains('lang-open') ) {
+				closeTriggerLangDrawer()
+			}
+			
 			appContainer.classList.remove('home');
 			
 			activeCog.classList.add('clicked');
@@ -320,14 +328,14 @@
 		});	
 	}
 	
-	// Lang Trigger
+	// Language Trigger
 	const openTriggerLangDrawer = function() {
 		gsap.to(langShift, {x: '-=25.4vw', ease: "circ.out", duration: .8});
 	}
 	const closeTriggerLangDrawer = function() {
 		gsap.to(langShift, {x: '+=25.4vw', ease: "circ.out", duration: .8});
 		langDrawerTriggers.forEach(function (langDrawerTrigger, index) {
-			langDrawerTrigger.classList.remove('clicked');
+			appContainer.classList.remove('lang-open');
 			langDrawerTrigger.classList.add('is-animating');
 			setTimeout(function() {
 				langDrawerTrigger.classList.remove('is-animating');
@@ -337,22 +345,22 @@
 	
 	langDrawerTriggers.forEach(function (langDrawerTrigger, index) {
 		langDrawerTrigger.addEventListener("click", (event) => {
-			if (langDrawerTrigger.classList.contains('is-animating') ) {
+			if (appContainer.classList.contains('is-animating') ) {
 				
 			} else {
-				if (langDrawerTrigger.classList.contains('clicked') ) {
-					langDrawerTrigger.classList.remove('clicked');
-					langDrawerTrigger.classList.add('is-animating');
+				if (appContainer.classList.contains('lang-open') ) {
+					appContainer.classList.remove('lang-open');
+					appContainer.classList.add('is-animating');
 					closeTriggerLangDrawer();
 					setTimeout(function() {
-						langDrawerTrigger.classList.remove('is-animating');
+						appContainer.classList.remove('is-animating');
 					}, 850);
 				} else {
-					langDrawerTrigger.classList.add('clicked');
-					langDrawerTrigger.classList.add('is-animating');
+					appContainer.classList.add('lang-open');
+					appContainer.classList.add('is-animating');
 					openTriggerLangDrawer();
 					setTimeout(function() {
-						langDrawerTrigger.classList.remove('is-animating');
+						appContainer.classList.remove('is-animating');
 					}, 850);
 				}
 			}
@@ -364,26 +372,53 @@
 	const langUKs = document.querySelectorAll('.lang-uk');
 	const langDEs = document.querySelectorAll('.lang-de');
 	
+	appContainer.setAttribute('lang', 'uk');
+	
 	gsap.to(langDEs, {autoAlpha: 0, duration: 0});
 	
 	showLangUKs.forEach(function (showLangUK, index) {
-		showLangUK.addEventListener("click", (event) => {
-			event.preventDefault();
-			backPageConstant.classList.remove('de-bg');
-			gsap.to(langDEs, {autoAlpha: 0, duration: .3});
-			gsap.to(langUKs, {autoAlpha: 1, duration: .3, delay: .1});
-			closeTriggerLangDrawer();
-		});
+		if (appContainer.classList.contains('is-animating') ) {
+			
+		} else {
+			
+			showLangUK.addEventListener("click", (event) => {
+				event.preventDefault();
+				appContainer.classList.add('is-animating');
+				appContainer.setAttribute('lang', 'uk');
+				backPageConstant.classList.remove('de-bg');
+				gsap.to(langDEs, {autoAlpha: 0, duration: .3});
+				gsap.to(langUKs, {autoAlpha: 1, duration: .3, delay: .1});
+				closeTriggerLangDrawer();
+				setTimeout(function() {
+					appContainer.classList.remove('is-animating');
+				}, 850);
+			});
+		
+		}
+		
 	});
 	
 	showLangDEs.forEach(function (showLangDE, index) {
-		showLangDE.addEventListener("click", (event) => {
-			event.preventDefault();
-			backPageConstant.classList.add('de-bg');
-			gsap.to(langUKs, {autoAlpha: 0, duration: .3});
-			gsap.to(langDEs, {autoAlpha: 1, duration: .3, delay: .1});
-			closeTriggerLangDrawer();
-		});
+		
+		if (appContainer.classList.contains('is-animating') ) {
+			
+		} else {
+		
+			showLangDE.addEventListener("click", (event) => {
+				event.preventDefault();
+				appContainer.classList.add('is-animating');
+				appContainer.setAttribute('lang', 'de');
+				backPageConstant.classList.add('de-bg');
+				gsap.to(langUKs, {autoAlpha: 0, duration: .3});
+				gsap.to(langDEs, {autoAlpha: 1, duration: .3, delay: .1});
+				closeTriggerLangDrawer();
+				setTimeout(function() {
+					appContainer.classList.remove('is-animating');
+				}, 850);
+			});
+		
+		}
+		
 	});
 	
 	// Return to Home Page
